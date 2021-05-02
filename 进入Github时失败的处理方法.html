@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>进入Github时失败的处理方法</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2><a id="1_2"></a>1:第一步。</h2>
+<p>打开域名解析网址：https://www.ipaddress.com/<br>
+打开之后，分别搜索以下3个域名：</p>
+<pre><code>github.com
+assets-cdn.github.com
+github.global.ssl.fastly.net
+</code></pre>
+<p>获取相对应的ip地址。</p>
+<h2><a id="2_14"></a>2：配置静态域名映射</h2>
+<p>以windows环境为例，在C:\Windows\System32\drivers\etc\hosts文件里加上刚查到的域名映射<br>
+linux环境：/ect/hosts<br>
+配置完成后退出，刷新DNS缓存。</p>
+<pre><code>ipconfig /flushdns
+</code></pre>
+<h2><a id="3_21"></a>3：配置完成</h2>
+<h2><a id="4hosts_22"></a>4：找不到hosts文件的解决办法</h2>
+<p>win+R打开cmd，粘贴以下代码后回车，会复制host文件并以记事本打开host文件</p>
+<pre><code>for /f %P in ('dir %windir%\WinSxS\hosts /b /s') do copy %P %windir%\System32\drivers\etc &amp; echo %P &amp; Notepad %P
+</code></pre>
+</div>
+</body>
+
+</html>

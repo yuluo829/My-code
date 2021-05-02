@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git与Github基本操作</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2><a id="GitGithub_0"></a>Git&amp;Github:版本控制工具</h2>
+<h2><a id="1Git_3"></a>1：Git安装</h2>
+<p>Git的安装详解请移步至另一篇文章<a href="https://editor.csdn.net/md/?articleId=116352474"><strong>传送门</strong></a></p>
+<h2><a id="2Github_8"></a>2：Github的本地结构：</h2>
+<p>1:工作区：写代码的地方</p>
+<pre><code>通过`git add`命令将工作区文件上传到暂存区
+</code></pre>
+<p>2:暂存区：临时存储</p>
+<pre><code>通过'git commit'命令将暂存区文件上传至本地库
+</code></pre>
+<p>3:本地库：历史版本</p>
+<h2><a id="3_26"></a>3：初始化操作：</h2>
+<p><img src="https://img-blog.csdnimg.cn/20210502130245431.PNG" alt="在这里插入图片描述"><br>
+本地库初始化：</p>
+<pre><code>git init
+</code></pre>
+<p>(本地化仓库后.git目录中存放的是本地库相关的子目录和文件，不要删除，修改）<br>
+<img src="https://img-blog.csdnimg.cn/20210502130324615.PNG" alt="在这里插入图片描述"></p>
+<h2><a id="4_37"></a>4：设置签名：</h2>
+<p><img src="https://img-blog.csdnimg.cn/20210502130340669.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUyMzk3NDcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<pre><code>用户名：***
+Email地址：*********@****.com
+(设置的签名和登录远程仓库（代码托管中心）的账号，密码没有任何关系。)
+</code></pre>
+<h2><a id="5_46"></a>5：命令</h2>
+<p>项目级别/仓库级别：仅在当前本地仓库范围内有效</p>
+<pre><code>git config user.name ***
+git config uesr.email *****@***.com
+**信息保存目录：当前项目./.git/config
+</code></pre>
+<p>系统用户级别：登录当前操作系统的用户范围</p>
+<pre><code>git config --global user.name *****
+git config --global uesr.email *****@***.com
+信息保存位置：~/.gitconfig
+</code></pre>
+<p>级别优先级：</p>
+<pre><code>就近原则：项目级别优先于系统用户级别，二者都有时采用项目级别的签名
+如果只有系统用户级别的签名，就以系统用户级别的签名为准
+二者都没有时不允许
+</code></pre>
+<h2><a id="6_73"></a>6：进入当前项目文件夹</h2>
+<p><img src="https://img-blog.csdnimg.cn/2021050213040816.PNG" alt="在这里插入图片描述"><br>
+使用vim编辑一个C文件<br>
+<img src="https://img-blog.csdnimg.cn/20210502131147766.PNG" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210502130514407.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUyMzk3NDcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>显示当前仓库信息(状态查看)</p>
+<pre><code>git status	
+</code></pre>
+<p>添加文件至缓存区</p>
+<p><img src="https://img-blog.csdnimg.cn/20210502130549590.PNG" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/2021050213061549.PNG" alt="在这里插入图片描述"></p>
+<pre><code>git add + 文件名		
+</code></pre>
+<p>从暂存区撤回		<br>
+<img src="https://img-blog.csdnimg.cn/20210502130710524.PNG" alt="在这里插入图片描述"></p>
+<pre><code>git rm --cached main.c
+</code></pre>
+<p>从暂存区提交至本地库	<br>
+<img src="https://img-blog.csdnimg.cn/20210502130857738.PNG" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20210502130759331.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUyMzk3NDcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20210502130917774.PNG" alt="在这里插入图片描述"></p>
+<pre><code>git commit main.c
+git commit -m "版本更改信息" 《文件名》
+</code></pre>
+<h2><a id="7_109"></a>7：版本穿梭测试的准备：</h2>
+<p><img src="https://img-blog.csdnimg.cn/20210502131228634.PNG" alt="在这里插入图片描述"><br>
+查看版本信息</p>
+<pre><code>git log
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20210502131310652.PNG" alt="在这里插入图片描述"><br>
+以简介形式展示添加过的版本信息</p>
+<pre><code>git log --pretty=oneline
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20210502131320621.PNG" alt="在这里插入图片描述"><br>
+以显示一部分哈希值展示</p>
+<pre><code>git log --oneline
+</code></pre>
+<p>调出所有版本信息</p>
+<pre><code>git reflog
+</code></pre>
+<p>版本的前进后退操作：</p>
+<pre><code>本质：是对HEAD指针的操作
+</code></pre>
+<p>1：基于索引值操作：</p>
+<pre><code>git reset --hard 【索引值】
+</code></pre>
+<p>2：使用^符号【只能后退】</p>
+<pre><code>git reset --hard &lt;&lt;&lt;     (一个退一步，以此类推)
+git reset --hard~3
+</code></pre>
+<p>3：使用~符号【只能后退】</p>
+<pre><code>git reset --hard~3        （~3，后退3步）
+</code></pre>
+<p>reset参数区别：</p>
+<pre><code>--soft		在本地库移动指针
+--mixed		在本地库移动HEAD指针并且重置暂存区
+--hard		在本地库移动指针，充重置暂存区和工作区
+</code></pre>
+<h2><a id="8_163"></a>8：永久删除文件后找回</h2>
+<pre><code>前提		删除前，文件存在时的状态提交到了本地库
+删除		rm &lt;文件名&gt;
+找回		倒回到上一个版本，从而找回上一个版本文件
+		git reset --hard 【指针位置】
+		删除操作已经提交到本地库：指针位置指向历史记录
+		删除操作尚未提交到本地库：指针位置使用HEAD
+</code></pre>
+<h2><a id="9_172"></a>9：比较文件差异：</h2>
+<pre><code>git diff 《文件名》
+</code></pre>
+<p>将工作区的文件和暂存区的文件比较</p>
+<pre><code>git diff 【本地库中历史版本】【文件名】
+</code></pre>
+<p>将工作区中的各个文件和本地库历史文件比较</p>
+<pre><code>git diff
+git diff HEAD
+</code></pre>
+<p>不带文件名比较多个文件</p>
+<h2><a id="10Git_195"></a>10：Git分支：</h2>
+<p>Git分支管理的本质是创建和移动指针</p>
+<p>修复bug时，会创建一个hot_fix的分支，热修复在程序运行时进行维护</p>
+<p>查看分支：<br>
+<img src="https://img-blog.csdnimg.cn/20210502131638799.PNG" alt="在这里插入图片描述"></p>
+<pre><code>git branch -v
+</code></pre>
+<p>创建一个新的分支<br>
+<img src="https://img-blog.csdnimg.cn/20210502131802403.PNG" alt="在这里插入图片描述"></p>
+<pre><code>git branch hot_fix(***分支名)
+</code></pre>
+<p>切换分支<br>
+<img src="https://img-blog.csdnimg.cn/20210502131839149.PNG" alt="在这里插入图片描述"></p>
+<pre><code>git checkout &lt;分支名&gt;
+</code></pre>
+<p>合并分支：</p>
+<pre><code>	①：切换到接受修改的分支（被合并，增加新内容）上
+				git checkout 【被合并分支名】
+	②：执行merge命令
+				git merge 【有新内容的分支】
+</code></pre>
+<p>解决冲突</p>
+<pre><code>		①：编辑文件，删除特殊符号
+		②：把文件修改到你满意的程度，保存退出编辑器
+		③：git add【文件名】
+		④：git commit -m ”日志信息“
+			注意：此时commit一定不能带具体文件名
+</code></pre>
+<h2><a id="11_238"></a>11：哈希算法（加密算法）</h2>
+<pre><code>	特点：不管输入数据的数据量有多大，输入同一个哈希算法，加密结果长度固定
+	哈希算法确定，输入数据有变化，输出数据一定有变化，而且通常变化很大
+	哈希算法确定，输入数据确定，输出数据能够保持不变
+	哈希算法不可逆
+	Git底层采用的是SHA-1算法
+		在服务器端对文件用SHA-1算法运算。下载之后再次对文件进行运算，得到的输出数据一样，则证明文件传输过程中无数据丢失
+</code></pre>
+<h2><a id="12Github_248"></a>12：注册Github账号创建远程仓库：</h2>
+<p>创建完成之后进入你创建的仓库会得到一个HTTP的网址，复制进入Git Bash</p>
+<p><img src="https://img-blog.csdnimg.cn/202105021320130.PNG" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20210502132033156.PNG" alt="在这里插入图片描述"></p>
+<pre><code>git remote -v "地址别名" + 地址
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20210502132050476.PNG" alt="在这里插入图片描述"></p>
+<h2><a id="13_260"></a>13：推送操作：</h2>
+<p><img src="https://img-blog.csdnimg.cn/20210502132126192.PNG" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20210502132138218.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUyMzk3NDcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20210502132208599.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUyMzk3NDcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<pre><code>git push “仓库名” “分支名"
+</code></pre>
+<p>推送到github上之后：<br>
+<img src="https://img-blog.csdnimg.cn/20210502132315277.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUyMzk3NDcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/2021050213232994.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUyMzk3NDcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2><a id="14_272"></a>14：克隆操作：</h2>
+<p>初始化本地库<br>
+完整的把远程库下载本地库<br>
+<img src="https://img-blog.csdnimg.cn/20210502132347228.PNG" alt="在这里插入图片描述"></p>
+<pre><code>git clong + ”克隆时的远程库地址“
+</code></pre>
+</div>
+</body>
+
+</html>
